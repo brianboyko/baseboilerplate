@@ -2,5 +2,39 @@
   "name": "backend",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "start": "yarn run build && node ./dist/index.js",
+    "build": "./node_modules/.bin/babel src -d dist/ --copy-files",
+    "pretty": "./node_modules/.bin/prettier --write './src/**/*.js'",
+    "test": "jest",
+    "watch-start": "npm-watch start",
+    "watch-test": "npm-watch test"
+  },
+  "watch": {
+    "start": "src/**/*.js",
+    "test": "{src,test}/**/*.js"
+  },
+  "jest": {
+    "verbose": false
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-jest": "^22.4.3",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "glow": "^1.2.2",
+    "jest": "^22.4.3",
+    "npm-watch": "^0.3.0",
+    "prettier": "^1.12.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "morgan": "^1.9.0",
+    "superagent": "^3.8.2"
+  }
 }
