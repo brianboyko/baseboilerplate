@@ -1,0 +1,8 @@
+{
+  "name": "baseboilerplate",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/brianboyko/baseboilerplate.git",
+  "author": "Brian Boyko <brian.boyko@gmail.com>",
+  "license": "MIT"
+}
