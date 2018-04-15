@@ -4,8 +4,9 @@ import bodyParser from "body-parser";
 import morgan from "morgan";
 import config from "./config";
 import routes from "./routes/index";
+import Connection from "./db/Connection";
 
-const runServer = () => {
+const runServer = db => {
   const app = express();
   // cors
   app.use(function(req, res, next) {
@@ -32,9 +33,11 @@ const runServer = () => {
   app.use(bodyParser.json());
   app.use(morgan("dev"));
 
-  const appWithRoutes = routes(app);
+  const appWithRoutes = routes(app, db);
   appWithRoutes.listen(config.PORT);
   console.log(`API is listening at http://localhost:${config.PORT}`);
 };
 
-runServer();
+const db = new Connection();
+
+db.up().then(() => runServer(db));
